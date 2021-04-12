@@ -1,0 +1,18 @@
+#!/bin/bash
+
+cd /usr/local
+wget http://ftp.mozilla.org/pub/firefox/releases/83.0/linux-x86_64/en-US/firefox-83.0.tar.bz2
+tar xvjf firefox-83.0.tar.bz2 
+ln -s /usr/local/firefox/firefox /usr/bin/firefox
+
+yum -y install gedit
+
+aws s3 cp s3://YOUR_BUCKET/tecplot360ex2020r1.tgz tecplot360ex2020r1.tgz 
+tar xzvf tecplot360ex2020r1.tgz
+
+line="PATH=$PATH:/usr/local/tecplot360ex2020r1/bin"
+echo $line >> /home/ec2-user/.bashrc
+source /home/ec2-user/.bashrc
+
+
+
